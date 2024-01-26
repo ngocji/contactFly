@@ -253,7 +253,7 @@ class _$BadRequestImpl implements BadRequest {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$BadRequestImpl &&
@@ -500,7 +500,7 @@ class _$UnauthorizedImpl implements Unauthorized {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$UnauthorizedImpl &&
@@ -747,7 +747,7 @@ class _$ForbiddenImpl implements Forbidden {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$ForbiddenImpl &&
@@ -994,7 +994,7 @@ class _$NotFoundImpl implements NotFound {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$NotFoundImpl &&
@@ -1242,7 +1242,7 @@ class _$InternalServerErrorImpl implements InternalServerError {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$InternalServerErrorImpl &&
@@ -1490,7 +1490,7 @@ class _$NoConnectionImpl implements NoConnection {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$NoConnectionImpl &&
@@ -1730,7 +1730,7 @@ class _$OtherImpl implements Other {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$OtherImpl &&
@@ -1977,7 +1977,7 @@ class _$ServerMaintenanceImpl implements ServerMaintenance {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$ServerMaintenanceImpl &&

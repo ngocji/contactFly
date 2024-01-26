@@ -1,8 +1,6 @@
 import 'package:flutter_core/flutter_core.dart';
 import 'package:flutter_widget/flutter_widget.dart';
 
-import '../../gen/assets.gen.dart';
-
 class AppDialogWidget extends StatelessWidget {
   final String? title;
   final String? message;

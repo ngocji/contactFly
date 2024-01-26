@@ -46,6 +46,8 @@ dependency_overrides:
 
 flutter_gen:
   output: lib/src/gen/
+  integrations:
+    flutter_svg: true
 
 flutter:
 
@@ -53,6 +55,7 @@ flutter:
 
   assets:
     - assets/fonts/
+    - assets/images/
 
   fonts:
     - family: OpenSans
