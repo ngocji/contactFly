@@ -1,23 +1,4 @@
 {
   "@@locale": "en",
-  "app_name": "ShowSlinger",
-  "lbl_user_name": "Username",
-  "lbl_password": "Password",
-  "lbl_forgot_password": "Forgot Password",
-  "lbl_signin": "Login",
-  "lbl_agree": "By signing in you agree to our\n",
-  "lbl_term": "terms & conditions",
-  "lbl_and": " & ",
-  "lbl_privacy": "privacy policy",
-  "lbl_offline_enable": "Offline Scanning Enabled",
-  "lbl_success": "Success!",
-  "lbl_scan": "Scan ({number})",
-  "lbl_scanned": "Scanned",
-  "lbl_not_valid": "Not valid now",
-  "lbl_invalid": "Invalid",
-  "lbl_okay": "Okay",
-  "lbl_only_valid": "Ticket only valid for:",
-  "lbl_invalid_detail": "Unfortunately, this code cannot be \nread by the scanner",
-  "lbl_code_scanned": "This code has already been scanned"
-
+  "app_name": "ContactFly"
 }
