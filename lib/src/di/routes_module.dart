@@ -5,7 +5,7 @@ import 'package:showslinger/src/ui/screen/common_components/common_component_scr
 import 'package:showslinger/src/ui/screen/home/home_screen.dart';
 import 'package:showslinger/src/ui/screen/splash/splash_screen.dart';
 
-class AppModule extends Module {
+class RoutesModule extends Module {
   @override
   Route generateRoute(RouteSettings settings) {
     switch (settings.name) {

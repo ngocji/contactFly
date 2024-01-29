@@ -1,14 +1,11 @@
 import 'package:alice/alice.dart';
 import 'package:alice/utils/shake_detector.dart';
-import 'package:dio/dio.dart';
 import 'package:flutter/foundation.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_common/flutter_common.dart';
 import 'package:flutter_core/flutter_core.dart';
 import 'package:flutter_widget/flutter_widget.dart';
 import 'package:showslinger/router.dart';
-import 'package:showslinger/src/app_module.dart';
-import 'package:showslinger/src/ui/screen/common_components/common_component_screen.dart';
+import 'package:showslinger/src/di/app_module.dart';
 import 'package:showslinger/src/ui/screen/splash/splash_screen.dart';
 
 final sl = GetIt.instance;
@@ -16,32 +13,16 @@ final sl = GetIt.instance;
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
-  sl.registerLazySingleton(() => NavigationService());
-  sl.registerLazySingleton(() => ModuleManagement());
-  sl<ModuleManagement>().addModules([
-    CommonModule(),
-    AppModule(),
-  ]);
-  await sl<ModuleManagement>().inject(sl);
+  await inject(sl);
 
-  _setupDebug();
+  setupDebug(sl, kDebugMode);
 
+  // todo: change statusbar here
   // SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
   //   statusBarColor: Colors.transparent, // transparent status bar
   // ));
 
   runApp(const MyApp());
-}
-
-void _setupDebug() {
-  if (kDebugMode) {
-    sl.registerLazySingleton(() => Alice(
-          showNotification: false,
-          showInspectorOnShake: false,
-        ));
-    sl<Dio>().interceptors.add(sl<Alice>().getDioInterceptor());
-    sl<Alice>().setNavigatorKey(sl<NavigationService>().navigatorKey);
-  }
 }
 
 class MyApp extends StatefulWidget {
@@ -86,7 +67,7 @@ class _MyAppState extends State<MyApp> {
   Widget build(BuildContext context) {
     return MaterialApp(
       navigatorKey: sl<NavigationService>().navigatorKey,
-      title: 'Show Slinger',
+      title: 'ContactFly',
       themeMode: ThemeMode.light,
       theme: AppTheme.light().data,
       darkTheme: AppTheme.dark().data,

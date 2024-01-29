@@ -1,32 +1,40 @@
-import 'package:showslinger/src/domain/contact.dart';
+import 'package:json_annotation/json_annotation.dart';
+import 'package:showslinger/src/data/local/entity/contact_entity.dart';
 
-class ContactDto extends Contact {
-  factory ContactDto.fromJson(dynamic json) {
-    return ContactDto(
-        name: json['name'],
-        email: json['email'],
-        city: json['city'],
-        mac: json['mac'],
-        timestamp: json['timestamp'],
-        creditCard: json['creditcard']);
-  }
+part 'contact_dto.g.dart';
 
-  Map<String, dynamic> toJson() {
-    final map = <String, dynamic>{};
-    map['name'] = name;
-    map['email'] = email;
-    map['city'] = city;
-    map['mac'] = mac;
-    map['timestamp'] = timestamp;
-    map['creditcard'] = creditCard;
-    return map;
-  }
+@JsonSerializable()
+class ContactDto {
+  @JsonKey(name: "name")
+  final String? name;
+  @JsonKey(name: "email")
+  final String? email;
+  @JsonKey(name: "city")
+  final String? city;
+  @JsonKey(name: "mac")
+  final String? mac;
+  @JsonKey(name: "timestamp")
+  final String? timestamp;
+  @JsonKey(name: "creditcard")
+  final String? creditCard;
 
   const ContactDto(
-      {super.name,
-      super.email,
-      super.city,
-      super.mac,
-      super.timestamp,
-      super.creditCard});
+      {this.name,
+      this.email,
+      this.city,
+      this.mac,
+      this.timestamp,
+      this.creditCard});
+
+  factory ContactDto.fromJson(Map<String, dynamic> json) {
+    return _$ContactDtoFromJson(json);
+  }
+
+  Map<String, dynamic> toJson() => _$ContactDtoToJson(this);
+}
+
+extension ContactDtoExt on ContactDto {
+  ContactEntity? toEntity() {
+    return ContactEntity.fromJson(toJson());
+  }
 }

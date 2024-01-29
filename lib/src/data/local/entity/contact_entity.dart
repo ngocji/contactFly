@@ -1,32 +1,34 @@
-import 'package:showslinger/src/domain/contact.dart';
+import 'package:json_annotation/json_annotation.dart';
+import 'package:showslinger/src/data/local/DatabaseProvider.dart';
 
-class ContactEntity extends Contact {
-  factory ContactEntity.fromJson(dynamic json) {
-    return ContactEntity(
-        name: json['name'],
-        email: json['email'],
-        city: json['city'],
-        mac: json['mac'],
-        timestamp: json['timestamp'],
-        creditCard: json['creditcard']);
-  }
+part 'contact_entity.g.dart';
 
-  Map<String, dynamic> toJson() {
-    final map = <String, dynamic>{};
-    map['name'] = name;
-    map['email'] = email;
-    map['city'] = city;
-    map['mac'] = mac;
-    map['timestamp'] = timestamp;
-    map['creditcard'] = creditCard;
-    return map;
-  }
+@JsonSerializable()
+class ContactEntity {
+  @JsonKey(name: Tables.CONTACT_COLUMN_NAME)
+  final String? name;
+  @JsonKey(name: Tables.CONTACT_COLUMN_EMAIL)
+  final String? email;
+  @JsonKey(name: Tables.CONTACT_COLUMN_CITY)
+  final String? city;
+  @JsonKey(name: Tables.CONTACT_COLUMN_MAC)
+  final String? mac;
+  @JsonKey(name: Tables.CONTACT_COLUMN_TIMESTAMP)
+  final String? timestamp;
+  @JsonKey(name: Tables.CONTACT_COLUMN_CREDIT_CARD)
+  final String? creditCard;
 
   const ContactEntity(
-      {super.name,
-      super.email,
-      super.city,
-      super.mac,
-      super.timestamp,
-      super.creditCard});
+      {this.name,
+      this.email,
+      this.city,
+      this.mac,
+      this.timestamp,
+      this.creditCard});
+
+  factory ContactEntity.fromJson(Map<String, dynamic> json) {
+    return _$ContactEntityFromJson(json);
+  }
+
+  Map<String, dynamic> toJson() => _$ContactEntityToJson(this);
 }
