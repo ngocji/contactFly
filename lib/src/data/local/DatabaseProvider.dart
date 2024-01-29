@@ -42,6 +42,32 @@ class DatabaseProvider {
             conflictAlgorithm: ConflictAlgorithm.replace)
         .safe();
   }
+
+  Future<ContactEntity> update(ContactEntity entity) async {
+    await database
+        .update(Tables.CONTACT_TABLE, entity.toJson(),
+            conflictAlgorithm: ConflictAlgorithm.replace)
+        .safe();
+    return entity;
+  }
+
+  Future<List<ContactEntity>> getContacts(int limit, int page) async {
+    final List<Map<String, dynamic>> maps = await database.query(
+        Tables.CONTACT_TABLE,
+        orderBy: Tables.CONTACT_COLUMN_NAME,
+        limit: limit,
+        offset: (page * limit));
+
+    return List.generate(maps.length, (i) {
+      return ContactEntity.fromJson(maps[i]);
+    });
+  }
+
+  Future<bool> delete(String mac) async {
+    final deleted = await database
+        .delete(Tables.CONTACT_TABLE, where: "mac = ?", whereArgs: [mac]);
+    return deleted > 0;
+  }
 }
 
 extension FutureExt on Future {
