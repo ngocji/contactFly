@@ -1,40 +1,19 @@
-import 'package:json_annotation/json_annotation.dart';
-import 'package:showslinger/src/data/local/entity/contact_entity.dart';
-
+import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:flutter/foundation.dart';
+part 'contact_dto.freezed.dart';
 part 'contact_dto.g.dart';
 
-@JsonSerializable()
-class ContactDto {
-  @JsonKey(name: "name")
-  final String? name;
-  @JsonKey(name: "email")
-  final String? email;
-  @JsonKey(name: "city")
-  final String? city;
-  @JsonKey(name: "mac")
-  final String? mac;
-  @JsonKey(name: "timestamp")
-  final String? timestamp;
-  @JsonKey(name: "creditcard")
-  final String? creditCard;
+@freezed
+class ContactDto with _$ContactDto {
+  const factory ContactDto({
+    @JsonKey(name: 'name') String? name,
+    @JsonKey(name: 'email') String? email,
+    @JsonKey(name: 'city') String? city,
+    @JsonKey(name: 'mac') String? mac,
+    @JsonKey(name: 'timestamp') String? timestamp,
+    @JsonKey(name: 'creditcard') String? creditcard,
+  }) = _ContactDto;
 
-  const ContactDto(
-      {this.name,
-      this.email,
-      this.city,
-      this.mac,
-      this.timestamp,
-      this.creditCard});
-
-  factory ContactDto.fromJson(Map<String, dynamic> json) {
-    return _$ContactDtoFromJson(json);
-  }
-
-  Map<String, dynamic> toJson() => _$ContactDtoToJson(this);
-}
-
-extension ContactDtoExt on ContactDto {
-  ContactEntity? toEntity() {
-    return ContactEntity.fromJson(toJson());
-  }
+  factory ContactDto.fromJson(Map<String, Object?> json) =>
+      _$ContactDtoFromJson(json);
 }
