@@ -43,6 +43,15 @@ class DatabaseProvider {
         .safe();
   }
 
+  Future<void> inserts(List<ContactEntity> entities) async {
+    Batch batch = database.batch();
+    for (var e in entities) {
+      batch.insert(Tables.CONTACT_TABLE, e.toJson(),
+          conflictAlgorithm: ConflictAlgorithm.replace);
+    }
+    await batch.commit(noResult: true);
+  }
+
   Future<ContactEntity> update(ContactEntity entity) async {
     await database
         .update(Tables.CONTACT_TABLE, entity.toJson(),
