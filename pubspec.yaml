@@ -33,6 +33,7 @@ dependencies:
   qr_code_scanner: ^1.0.1
   sqflite: ^2.3.2
   path: ^1.8.3
+  retrofit: ^4.0.2
 
 
 dev_dependencies:
@@ -42,6 +43,7 @@ dev_dependencies:
 
   flutter_lints: ^3.0.1
   freezed: ^2.4.6
+  retrofit_generator: '>=7.0.0 <8.0.0'
 
 dependency_overrides:
   sensors_plus: ^4.0.2
